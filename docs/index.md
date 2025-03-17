@@ -90,6 +90,9 @@ GIS 1 je v tomto tématu úvodním kurzem. Zatímco přednášky vás provedou z
 10. Rastrová reprezentace prostorových objektů, způsob ukládání rastrových objektů
 
 ## Harmonogram {: style="margin-bottom:0;"}
+semestr LETNÍ 2024/2025
+{: style="opacity:50%;margin-top:0;"}
+
 
 [![](./assets/index/schedule.svg#only-light){.off-glb .no-filter}](https://kos.cvut.cz/schedule/course/1551GIS/semester/B232){target="_blank"}
 [![](./assets/index/schedule_dark.svg#only-dark){.off-glb .no-filter}](https://kos.cvut.cz/schedule/course/1551GIS/semester/B232){target="_blank"}

@@ -98,6 +98,13 @@ V této fázi je vždy rozumné provést validaci pomocí *Validate Join*. Jedn�
 
 ???+ note "&nbsp;<span style="color:#448aff">Pozn.</span>"
       Pokud si přejeme vrstvu s připojenými daty trvale uložit např. do geodatabáze, lze po pravém kliknutí na vrstvu vybrat *Data* a funkci *Export Features*. Takto exportovaná data budou o nové záznamy obohacena, tzn. budou obsahovat veškerá původně připojená data. Naopak, pokud připojená data sloužila např. pouze k výpočtu nového atributu a pro další práci již nejsou potřeba, je vhodné *joiny* odstranit pomocí *Joins and relates* a *Remove Join* (s následným výběrem daného joinu) či *Remove all joins* pro kompletní odebrání připojených dat.
+
+**9.** Výsledek však nemusí zůstat jen u čtení tabulárních dat; relativní data vztažená k administrativním dílům lze vizualizovat pomocí kartografické metody zvané kartogram
+(více o metodách tematické kartografie se dozvíte v předmětech Kartografie 2 a Kartografie 3 viz [samostatná dokumentace](../kar2/kartogram)). Po pravém kliknutí na vrstvu
+a kliknutí na *Symbology* lze změnit *Primary symbology* na *Graduated Colors* z kategorie vizualizace kvantitativních dat. Pak stačí zvolit atribut, který bude pro vizualizaci
+použit (případně další parametry, podrobněji viz zmíněná dokumentace kartografických předmětů).
+
+Kompozici možno doplnit o názvy; v panelu *Labeling* stačí aktivovat popis a vybrat atribut, kterým budou polygony popsány. Opět se jedná o téma, kterému se věnuje detailně [samostatná dokumentace](../kar2/popisy).
       
 ## Úlohy k procvičení
 

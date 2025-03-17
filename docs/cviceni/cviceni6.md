@@ -3,6 +3,7 @@ icon: material/numeric-6-box
 title: Cvičení 6
 ---
 
+
 # Vektorizace, tvorba geodatabáze, kontrola topologie
 
 ## Cíl cvičení
@@ -33,13 +34,13 @@ Ukázka automatického ořezu footprintu. Tvorba vlastní geodatabáze, vektoriz
 
 ### Založení nové geodatabáze
 
-**1.** Geodatabázi vytvoříme kliknutím pravým tlačítkem myši na složku našeho projektu v záložce *Catalog* -> *New* -> *File Geodatabase*.
+**1.** Geodatabázi vytvoříme kliknutím pravým tlačítkem myši na složku našeho projektu v záložce _:material-tab: Catalog_{: .outlined_code} → *:material-form-dropdown: New*{: .outlined_code} → *:material-form-dropdown: File Geodatabase*{: .outlined_code}.
 
 ???+ note "&nbsp;<span style="color:#448aff">Poznámka ke geodatabázi:</span>"
       Takto vytvořenou geodatabázi můžeme otevřít v jakémkoliv GIS softwaru (např. ArcGIS PRO, QGIS). Je proto vhodná pro sdílení dat.
 
 <figure markdown>
-![new_gdb](../assets/cviceni6/new_gdb.png "Tvorba nové geodatabáze")
+![new_gdb](../assets/cviceni6/new_gdb.png)
     <figcaption>Tvorba nové geodatabáze</figcaption>
 </figure>
 
@@ -58,20 +59,20 @@ Ve stavu, kdy máme přidané georeferencované rastry do mozaiky, je potřeba o
 **1.** V mapovém okně otevřeme mozaiku a klad mapových listů. Kladu změníme symbologii tak, abychom viděli pouze hrany listů. 
 
 <figure markdown>
-![klad](../assets/cviceni6/klad.png "Mozaika a klad mapových listů v mapovém okně")
+![klad](../assets/cviceni6/klad.png)
     <figcaption>Mozaika a klad mapových listů v mapovém okně</figcaption>
 </figure>
 
 **2.** Před automatickým ořezem footprintů je nutné zkontrolovat pojmenování listů, které musí být jak v mozaice, tak v kladu listů stejné. Případně je potřebný jiný jednoznačný atribut, na základě kterého se obě vrstvy propojí.
 
 <figure markdown>
-![klad_tabulka](../assets/cviceni6/klad_tabulka.png "Ukázka atributových tabulek předpřipravených vrstev"){ width="800" }
+![klad_tabulka](../assets/cviceni6/klad_tabulka.png){ width="800" }
     <figcaption>Ukázka atributových tabulek předpřipravených vrstev</figcaption>
 </figure>
 
-**3.** Automatický ořez footprintu se nastaví pravým kliknutím myši na danou mozaiku -> *Modify* -> *Import Footprints or Boundary*. 
+**3.** Automatický ořez footprintu se nastaví pravým kliknutím myši na danou mozaiku → *:material-form-dropdown: Modify*{: .outlined_code} → *:material-form-dropdown: Import Footprints or Boundary*{: .outlined_code}. 
 
-**4.** Ve funkci *Import Mosaic Dataset Geometry* nastavíme parametry dle obrázku níže.
+**4.** Ve funkci [*:material-cog: __Import Mosaic Dataset Geometry__*{: .outlined_code}](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/import-mosaic-dataset-geometry.htm) nastavíme parametry dle obrázku níže.
 
 - *Target Feature Class* – vrstva, jejíž geometrii chceme upravit. 
 
@@ -86,21 +87,21 @@ Ve stavu, kdy máme přidané georeferencované rastry do mozaiky, je potřeba o
     <figcaption>Nastavení funkce Import Mosaic Dataset Geometry</figcaption>
 </figure>
 
-**5.** Výsledek funkce *Import Mosaic Dataset Geometry* je vidět níže.
+**5.** Výsledek funkce *:material-cog: Import Mosaic Dataset Geometry*{: .outlined_code} je vidět níže.
 
 <figure markdown>
-![aut_orez](../assets/cviceni6/aut_orez.png "Výsledek automatického ořezu footprintu")
+![aut_orez](../assets/cviceni6/aut_orez.png)
     <figcaption>Výsledek automatického ořezu footprintu</figcaption>
 </figure>
 
 ### Vytvoření nového datasetu v geodatabázi
 
-**1.** Pro vytvoření souhrného datasetu, ve kterém budeme následně uchovávat některé datové vrstvy, je nutné kliknout pravým tlačítkem na cílovou geodatabázi -> *New* -> *Feature Dataset*.
+**1.** Pro vytvoření souhrného datasetu, ve kterém budeme následně uchovávat některé datové vrstvy, je nutné kliknout pravým tlačítkem na cílovou geodatabázi → *:material-form-dropdown: New*{: .outlined_code} → *:material-form-dropdown: Feature Dataset*{: .outlined_code}.
 
-**2.** Otevře se funkce *Create Feature Dataset*, ve které určíme mimo cílové geodatabáze také název a souřadnicový systém datasetu.
+**2.** Otevře se funkce [*:material-cog: __Create Feature Dataset__*{: .outlined_code}](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/create-feature-dataset.htm), ve které určíme mimo cílové geodatabáze také název a souřadnicový systém datasetu.
 
 <figure markdown>
-![dataset](../assets/cviceni6/dataset.png "Vytvoření datasetu")
+![dataset](../assets/cviceni6/dataset.png)
     <figcaption>Vytvoření datasetu</figcaption>
 </figure>
 
@@ -121,67 +122,67 @@ Pro analýzu rastrových map, je téměř vždy nutná jejich vektorizace, tedy 
       Před tvorbou tříd prvků pro vektorizaci rastrové mapy je vhodné nahlédnout do legendy, abychom měli představu o mapovém obsahu.
 
 <figure markdown>
-![SMO5_legenda](../assets/cviceni6/SMO5_legenda.png "Legenda SMO5"){ width="600" }
+![SMO5_legenda](../assets/cviceni6/SMO5_legenda.png){ width="600" }
     <figcaption>Značkový klíč SMO5</figcaption>
 </figure>
 
-**2.** Pro vytvoření třídy prvků musíme kliknout pravým tlačítkem na příslušný *Feature Dataset* v *Catalogu* -> *New* -> *Feature Class*.
+**2.** Pro vytvoření třídy prvků musíme kliknout pravým tlačítkem na příslušný *:simple-databricks: Feature Dataset*{: .outlined_code} v *:material-tab: Catalogu*{: .outlined_code} → *:material-form-dropdown: New*{: .outlined_code} → *:material-form-dropdown: Feature Class*{: .outlined_code}.
 
-**3.** V této ukázce vytvoříme 4 třídy prvků (plochy, domy, vodstvo a cesty). Ve funkci *Create Feature Class* zvolíme jméno třídy a její typ (pro nás *Polygon*). Následně klikneme na *Next*.
+**3.** V této ukázce vytvoříme 4 třídy prvků (plochy, domy, vodstvo a cesty). Ve funkci [*:material-cog: __Create Feature Class__*{: .outlined_code}](https://pro.arcgis.com/en/pro-app/latest/help/data/feature-classes/create-a-feature-class.htm) zvolíme jméno třídy a její typ (pro nás *Polygon*). Následně klikneme na *Next*.
 
-**4.** Na druhé stránce funkce *Create Feature Class* nastavujeme atributová pole třídy. Zde vytvoříme nové pole s názvem *druh_pozemku* po kliknutí na tlačítko *Click here to add a new field*. Datový typ přiřadíme číselný, například *Long Integer*. Tato čísla budou reprezentovat kódy různých druhů pozemku v mapě. Pokračujeme tlačítkem *Next*.
+**4.** Na druhé stránce funkce *:material-cog: Create Feature Class*{: .outlined_code} nastavujeme atributová pole třídy. Zde vytvoříme nové pole s názvem *druh_pozemku* po kliknutí na tlačítko *:material-button-cursor: Click here to add a new field*{: .outlined_code}. Datový typ přiřadíme číselný, například *Long Integer*. Tato čísla budou reprezentovat kódy různých druhů pozemku v mapě. Pokračujeme tlačítkem *:material-button-cursor: Next*{: .outlined_code}.
 
 **5.** Na třetí stránce zkontrolujeme souřadnicový systém třídy prvků. Nastavení na dalších stránkách můžeme pomechat ve výchozím stavu.
 
 <figure markdown>
-![trida_prvku](../assets/cviceni6/trida_prvku.png "Založení třídy prvků"){ width="800" }
+![trida_prvku](../assets/cviceni6/trida_prvku.png){ width="800" }
     <figcaption>Založení třídy prvků</figcaption>
 </figure>
 
 #### Práce se subtypy
 
-Pro kategorizaci dat v atributové tabulce je vhodné používat subtypy. V jednoduchosti se jedná o kódy jednotlivých typů atributů v tabulce, kterým je přiřazen popis pro přehlednější práci. V této ukázce vytvoříme subtypy pro třídu prvků *Plochy*, který nám bude určovat druh využití pozemku.
+Pro kategorizaci dat v atributové tabulce je vhodné používat subtypy. V jednoduchosti se jedná o kódy jednotlivých typů atributů v tabulce, kterým je přiřazen popis pro přehlednější práci. V této ukázce vytvoříme subtypy pro třídu prvků *:simple-databricks: Plochy*{: .outlined_code}, který nám bude určovat druh využití pozemku.
 
-**1.** Zobrazíme si atributovou tabulku vrstvy *Plochy*. 
+**1.** Zobrazíme si atributovou tabulku vrstvy *:simple-databricks: Plochy*{: .outlined_code}. 
 
-**2.** V horní části programu si rozklikneme záložku *Table*
+**2.** V horní části programu si rozklikneme záložku *:material-tab: Table*{: .outlined_code}
 
 <figure markdown>
-![table](../assets/cviceni6/table.png "Zobrazení polí atributové tabulky"){ width="800" }
+![table](../assets/cviceni6/table.png){ width="800" }
     <figcaption>Zobrazení polí atributové tabulky</figcaption>
 </figure>
 
-**3.** Otevře se nám nová nabídka, ve které zvolíme tlačítko *Subtypes* a následně *Create/Manage*.
+**3.** Otevře se nám nová nabídka, ve které zvolíme tlačítko *:material-button-cursor: Subtypes*{: .outlined_code} a následně *:material-button-cursor: Create/Manage*{: .outlined_code}.
 
 <figure markdown>
-![subtypes1](../assets/cviceni6/subtypes1.png "Zapnutí editace subtypů"){ width="800" }
+![subtypes1](../assets/cviceni6/subtypes1.png){ width="800" }
     <figcaption>Zapnutí editace subtypů</figcaption>
 </figure>
 
-**4.** V okně *Manage Subtypes* vybereme pole (*Subtype Field*), které chceme editovat a přiřadíme kódy dle druhů využití pozemků, které budeme na zájmovém území vektorizovat. Není problém se kdykoliv do této nabídky vrátit v průběhu práce a případně nový subtyp přidat či smazat.
+**4.** V okně *:material-tab: Manage Subtypes*{: .outlined_code} vybereme pole (*:material-button-cursor: Subtype Field*{: .outlined_code}), které chceme editovat a přiřadíme kódy dle druhů využití pozemků, které budeme na zájmovém území vektorizovat. Není problém se kdykoliv do této nabídky vrátit v průběhu práce a případně nový subtyp přidat či smazat.
 
-**5.** Editaci potvrdíme tlačítkem *OK* a následně ji uložíme ikonou *Save* v horní části obrazovky.
+**5.** Editaci potvrdíme tlačítkem *:material-button-cursor: OK*{: .outlined_code} a následně ji uložíme ikonou *:material-button-cursor: Save*{: .outlined_code} v horní části obrazovky.
 
 <figure markdown>
-![subtypes2](../assets/cviceni6/subtypes2.png "Přiřazení kódu subtypům")
+![subtypes2](../assets/cviceni6/subtypes2.png)
     <figcaption>Přiřazení kódu subtypům</figcaption>
 </figure>
 
 ???+ note "&nbsp;<span style="color:#448aff">Rozlišení subtypů v symbologii:</span>"
-      Pro přehlednější práci s daty, je vhodné rozlišit typy ploch barevně. To lze provést přes kliknutí pravým tlačítkem na vrstvu v *Contents* -> *Symbology* -> změnit *Single Symbol* na *Unique Values* -> změnit atribut v nabídce *Field 1* na požadovaný (např. *druh_pozemku*).
+      Pro přehlednější práci s daty, je vhodné rozlišit typy ploch barevně. To lze provést přes kliknutí pravým tlačítkem na vrstvu v *:material-tab: Contents*{: .outlined_code} → *:material-form-dropdown: Symbology*{: .outlined_code} → změnit *:material-button-cursor: Single Symbol*{: .outlined_code} na *:material-button-cursor: Unique Values*{: .outlined_code} → změnit atribut v nabídce *:material-form-dropdown: Field 1*{: .outlined_code} na požadovaný (např. *druh_pozemku*).
 
 #### Kresba
 
 Následuje samotný proces vektorizace, tedy "obkeslení" rastrových dat a vytvoření nových dat ve vektorové formě.
 
-**1.** Nástroje editace vektorových dat se nacházejí v záložce *Edit* v horní části programu. 
+**1.** Nástroje editace vektorových dat se nacházejí v záložce *:material-tab: Edit*{: .outlined_code} v horní části programu. 
 
-**2.** Nové prvky vytvoříme tlačítkem *Create* -> zvolení kresby daného subtypu v okně *Create Features*.
+**2.** Nové prvky vytvoříme tlačítkem *:material-button-cursor: Create*{: .outlined_code} → zvolení kresby daného subtypu v okně *:material-tab: Create Features*{: .outlined_code}.
 
-**3.** Vektorizované body přidáváme levým tlačítkem myši. Pro dokončení vektorizace určitého prvku buď dvakrát klikneme levým tlačítkem myši nebo zvolíme ikonu *Finish* v nástrojích v dolní části obrazovky. Při vektorizaci je potřeba myslet na nastavení přichycování bodů ([Snapping](https://pro.arcgis.com/en/pro-app/latest/help/editing/enable-snapping.htm)).
+**3.** Vektorizované body přidáváme levým tlačítkem myši. Pro dokončení vektorizace určitého prvku buď dvakrát klikneme levým tlačítkem myši nebo zvolíme ikonu *:material-button-cursor: Finish*{: .outlined_code} v nástrojích v dolní části obrazovky. Při vektorizaci je potřeba myslet na nastavení přichycování bodů [_:material-button-cursor: Snapping_{: .outlined_code}](https://pro.arcgis.com/en/pro-app/latest/help/editing/enable-snapping.htm).
 
 <figure markdown>
-![vekt](../assets/cviceni6/vekt.png "Vektorizace rastrové mapy")
+![vekt](../assets/cviceni6/vekt.png)
     <figcaption>Vektorizace rastrové mapy</figcaption>
 </figure>
 
@@ -237,44 +238,53 @@ Následuje samotný proces vektorizace, tedy "obkeslení" rastrových dat a vytv
 </table>
 
 ???+ note "&nbsp;<span style="color:#448aff">Uložení editace:</span>"
-      Po provedení změn v editaci vektorových dat, je nutné je uložit tlačítkem *Save* v záložce *Edit*.
+      Po provedení změn v editaci vektorových dat, je nutné je uložit tlačítkem *:material-button-cursor: Save*{: .outlined_code} v záložce *:material-tab: Edit*{: .outlined_code}.
 
 ### Kontrola topologie vektorových dat
 
 Jestliže chceme zkontrolovat topologickou čistotu vektorových dat, musejí být veškerá kontrolovaná data uložena uvnitř jednoho datasetu.
 
-**1.** Pro vytvoření nové topologie klikneme pravým tlačítkem myši na dataset -> *New* -> *Topology*.
+**1.** Pro vytvoření nové topologie klikneme pravým tlačítkem myši na dataset → *:material-form-dropdown: New*{: .outlined_code} → *:material-form-dropdown: Topology*{: .outlined_code}.
 
-**2.** Na první stránce otevřeného okna *Create Topology Wizard* se definují parametry topologie, tedy její název, přesnost a vstupní vrstvy.
+**2.** Na první stránce otevřeného okna *:material-tab: Create Topology Wizard*{: .outlined_code} se definují parametry topologie, tedy její název, přesnost a vstupní vrstvy.
 
-**3.** Druhá stránka obsahuje definice jednotlivých kontrolovaných topologických pravidel. Ta se nastaví dle potřeby. V této ukázce proběhne kontrola pravidel *Must Not Have Gaps (Area)* (data nesmí obsahovat mezery), *Must Not Overlap With (Area-Area)* (vrstvy se vzájemně nesmějí překrývat) a *Must Not Overlap (Area)* (jednotlivé vrstvy sami sebe nesmějí překrývat).
+**3.** Druhá stránka obsahuje definice jednotlivých kontrolovaných topologických pravidel. Ta se nastaví dle potřeby. V této ukázce proběhne kontrola pravidel *:material-magnify: Must Not Have Gaps (Area)*{: .outlined_code} (data nesmí obsahovat mezery), *:material-magnify: Must Not Overlap With (Area-Area)*{: .outlined_code} (vrstvy se vzájemně nesmějí překrývat) a *:material-magnify: Must Not Overlap (Area)*{: .outlined_code} (jednotlivé vrstvy sami sebe nesmějí překrývat).
 
-**4.** Třetí stránka obsahuje souhrn celé topologie. Tlačítkem *Finish* spustíme kontrolu.
+[:material-vector-polygon-variant: Přehled pravidel pro kontrolu topologie](https://pro.arcgis.com/en/pro-app/latest/help/editing/geodatabase-topology-rules-for-polygon-features.htm){ .md-button .md-button--primary }
+{: .button_array}
 
-**5.** Pokud se ve výstupním datasetu topologie nezobrazí, aktualizujeme jeho obsah kliknutím pravého tlačítka myši -> *Refresh*.
+**4.** Třetí stránka obsahuje souhrn celé topologie. Tlačítkem *:material-button-cursor: Finish*{: .outlined_code} spustíme kontrolu.
+
+**5.** Pokud se ve výstupním datasetu topologie nezobrazí, aktualizujeme jeho obsah kliknutím pravého tlačítka myši → *:material-form-dropdown: Refresh*{: .outlined_code}.
 
 <figure markdown>
-![topo](../assets/cviceni6/topo.png "Nastavení topologie")
+![topo](../assets/cviceni6/topo.png)
     <figcaption>Nastavení topologie</figcaption>
 </figure>
 
-**6.** V následujícím kroku je potřeba kontrolu topologie validovat kliknutím pravým tlačítkem na topologii v *Catalogu* -> *Validate*.
+**6.** V následujícím kroku je potřeba kontrolu topologie validovat kliknutím pravým tlačítkem na topologii v *:material-tab: Catalogu*{: .outlined_code} → *:material-button-cursor: Validate*{: .outlined_code}.
 
 **7.** Po validování přesuneme vrstvu topologie do mapového okna a měly bychom vidět objevené chyby.
 
-**8.** Pomocí nástrojů *Edit* opravíme vyznačené chyby v původních datech. Po editaci topologii znovu validujeme a jestliže kontrola topologie neobjeví žádné chyby, znamená to, že kontrolované vrstvy jsou topologicky korektní.
+**8.** Pomocí nástrojů *:material-button-cursor: Edit*{: .outlined_code} opravíme vyznačené chyby v původních datech. Po editaci topologii znovu validujeme a jestliže kontrola topologie neobjeví žádné chyby, znamená to, že kontrolované vrstvy jsou topologicky korektní.
 
-Na obrázku níže je zobrazena ukázka dvou nalezených topologických chyb (levý horní snímek). Pravý horní snímek zobrazuje pohled na data bez opravy topologie. Při porovnání s pravým dolním snímkem je zřejmé, že vektorizace cesty chybně překryla vektorizaci pastviny. Snímek vlevo dole zobrazuje druhou chybu, tedy vzájemný překryv dvou prvků patřících do vrstvy *Cesty*.
+Na obrázku níže je zobrazena ukázka dvou nalezených topologických chyb (levý horní snímek). Pravý horní snímek zobrazuje pohled na data bez opravy topologie. Při porovnání s pravým dolním snímkem je zřejmé, že vektorizace cesty chybně překryla vektorizaci pastviny. Snímek vlevo dole zobrazuje druhou chybu, tedy vzájemný překryv dvou prvků patřících do vrstvy *:simple-databricks: Cesty*{: .outlined_code}.
 
 <figure markdown>
-![topo2](../assets/cviceni6/topo2.png "Ukázka topologických chyb")
+![topo2](../assets/cviceni6/topo2.png)
     <figcaption>Ukázka topologických chyb</figcaption>
 </figure>
 
 ???+ note "&nbsp;<span style="color:#448aff">Tipy po urychlení kontroly topologie:</span>"
-      - Pokud je to možné, lze u dat se stejným atributem (např. les, louka) provést [*Dissolve*](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/dissolve.htm), kterým ze sloučených dat odstraníme případné chyby z překryvu stejnou vrstvou (třeba dvě louky vzájemně se překrývající).
-      - Pro zjednodušení kontroly topologie je možné všechna kontrolovaná data sloučit do jedné vrstvy, kterou následně zkontrolujeme samotnou. Nemusíme tedy řešit překryvy jednotlivých vrstev mezi sebou (*Must Not Overlap With*), ale zkontrolujeme pouze novou vrstvu samostatně vůči sobě (*Must Not Overlap*). Důležité je však po kontrole nezapomenou opravit případné chyby v původních datech.
-      - Odkaz na schématicky popsaná pravidla kontroly topologie je [**ZDE**](https://pro.arcgis.com/en/pro-app/latest/help/editing/pdf/topology_rules_poster.pdf).
+      - Pokud je to možné, lze u dat se stejným atributem (např. les, louka) provést [*:material-cog: __Dissolve__*{: .outlined_code}](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/dissolve.htm), kterým ze sloučených dat odstraníme případné chyby z překryvu stejnou vrstvou (třeba dvě louky vzájemně se překrývající).
+      - Pro zjednodušení kontroly topologie je možné všechna kontrolovaná data sloučit do jedné vrstvy, kterou následně zkontrolujeme samotnou. Nemusíme tedy řešit překryvy jednotlivých vrstev mezi sebou *:material-magnify: Must Not Overlap With*{: .outlined_code}, ale zkontrolujeme pouze novou vrstvu samostatně vůči sobě *:material-magnify: Must Not Overlap*{: .outlined_code}. Důležité je však po kontrole nezapomenou opravit případné chyby v původních datech.
+    
+      [:material-vector-polygon-variant: Schématicky popsaná pravidla kontroly topologie](https://pro.arcgis.com/en/pro-app/latest/help/editing/pdf/topology_rules_poster.pdf){ .md-button .md-button--primary }
+      {: .button_array}
+
+???+ note "&nbsp;<span style="color:#448aff">Zajímavé odkazy</span>"
+      - Draw Detailed Polygons in ArcGIS Pro, Fast and Easy: [https://youtu.be/Ab9aqsHj8X8?si=C4CCfrIkuYrrwDoK](https://youtu.be/Ab9aqsHj8X8?si=C4CCfrIkuYrrwDoK)
+      - Copy features between layers: [https://learn.arcgis.com/en/projects/copy-features-between-layers/](https://learn.arcgis.com/en/projects/copy-features-between-layers/)
 
 ## Úlohy k procvičení
 

@@ -19,7 +19,7 @@ Dotazy či připomínky k semestrální práci směřujte sem: *frantisek.muzik@
     
     ---
 
-    __30.4.2024__ proběhne __5 minutová__ prezentace výsledné online webové mapové aplikace.
+    __7.5.2025__ proběhne __5 minutová__ prezentace výsledné online webové mapové aplikace.
 </div>
 
 <hr class="level-1">

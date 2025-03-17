@@ -9,14 +9,14 @@ nav:
       - Rastrová data, georeferencování: cviceni/cviceni5.md
       - Vektorizace, tvorba geodatabáze, kontrola topologie: cviceni/cviceni6.md
       - ArcGIS Online, webové služby, připojení do ArcGIS Pro: cviceni/cviceni7.md
-      - Ukázky webové prezentace map, Experience Builder, Instant Apps, Dashboards: cviceni/cviceni8.md
+      - Základní buildery webových aplikací – Instant Apps & Story Maps: cviceni/cviceni8.md
       - Volně dostupné GIS nástroje (QGIS): cviceni/cviceni9.md
       - QGIS – online publikace dat: cviceni/cviceni10.md
   - Data: data.md
   # - Hodnocení: hodnoceni.md
   - Semestrální práce: semestralka.md
   # - Výuková videa: videa.md
-  - Kvíz: quiz.md
+  # - Kvíz: quiz.md
 plugins:
   - search
   - glightbox:
