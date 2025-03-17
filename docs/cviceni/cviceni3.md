@@ -23,6 +23,16 @@ Seznámení se se základními geoprocessingovými nástroji v GIS v rámci ře�
 - [**symmetrical difference**](https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/symmetrical-difference.htm): Vytváří novou vrstvu obsahující prvky, které jsou v jedné nebo druhé vstupní vrstvě, ale ne v jejich překryvu.
 - [**count overlapping features**](https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/count-overlapping-features.htm): Počítá počet prvků, které se překrývají, a výsledek ukládá do nové vrstvy nebo atributové tabulky.
 
+<hr class="level-1">
+
+Následující přehled ukazuje nejpoužívanější nástroje prostorových funkcí v ArcGIS Pro.
+
+<figure markdown>
+  ![Prostorové funkce](../assets/cviceni3/prost_funkce_srovnani.png "Prostorové funkce")
+  <figcaption>Srovnání vstupních vrstev a výsledků operace pro různé nástroje prostorových funkcí</figcaption>
+</figure>
+
+
 
 ## Použité datové podklady
 
@@ -151,9 +161,9 @@ Jakou finanční úsporu jste schopni svým návrhem zajistit, pokud by provoz j
 
 !!! task-fg-color "Úlohy"
 
-    K řešení následujích úloh použijte datovou sadu [ArcČR
+    K řešení **následujích** úloh použijte datovou sadu [ArcČR
     500](../../data/#arccr-500) verzi 3.3 dostupnou na disku *S* ve složče
-    ``K155\Public\data\GIS\ArcCR500 3.3``. Zde také najdete souboru s
+    ``K155\Public\data\GIS\ArcCR500 3.3``. Zde také **najdete** souboru s
     popisem dat ve formátu PDF.
 
     1. Jaká je výměra (v ha) bažin a rašelinišť ležících v lese. Kolik to
