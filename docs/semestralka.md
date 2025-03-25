@@ -26,9 +26,13 @@ Dotazy či připomínky k semestrální práci směřujte sem: *frantisek.muzik@
 
 **Pro zadané území vypracujte následující úkoly:**
 
-**1.** Zjistěte v jaké obci se nachází zadaný definiční bod. Z databáze [RÚIAN](https://k155cvut.github.io/gis-1/data/#ruian) tuto obec vyberte a vyexportujte ji do samostatné vrstvy. 
+### 1. Identifikace obce a katastrálních území
 
-Dále zjistěte jaká katastrální území se nachází na území vaší obce a v jakém z nich leží zadaný bod. Všechna katastrální území spadající do obce také z RÚIANu vyexportujte do samosatné vrstvy.
+- Zjistěte v jaké obci se nachází zadaný definiční bod. 
+
+- Vyberte odpovídající obec z databáze [RÚIAN](https://k155cvut.github.io/gis-1/data/#ruian) a exportujte ji jako samostatnou vrstvu.
+
+- Dále zjistěte jaká katastrální území se nachází na území vaší obce a v jakém z nich leží zadaný bod. Všechna katastrální území spadající do obce také z RÚIANu vyexportujte do samosatné vrstvy.
 
 ???+ note "&nbsp;<span style="color:#448aff">Nápověda</span>"
     Pro vložení souřadnic bodu lze použít například funkci Go to XY, která se nachází v záložce Map. 
@@ -40,13 +44,21 @@ Dále zjistěte jaká katastrální území se nachází na území vaší obce 
     <figcaption>Vložení souřadnic bodu pomocí funkce Go to XY</figcaption>
 </figure>
 
-**2.** Určete počet adresních míst na území dané obce (zdroj: RÚIAN).
+### 2. Adresní místa
 
-**3.** Zjistěte, zda se na území zadané obce a v 20 km kolem ní nachází celou plochou maloplošné zvláště chráněné území (zdroj: ZABAGED). Pokud ano, zobrazte jej v mapě jako samostatnou vrstvu. Zobrazte názvy vybraných území (záložka Labeling -> Field: NAZEV)
+- Určete počet adresních míst na území dané obce (zdroj: RÚIAN).
 
-**4.** Vytvořte samostatnou vrstvu, která bude obsahovat data způsobu využití pozemku **pro katastrální území**, ve kterém leží zadaný bod (zdroj: RÚIAN – vrstva *Parcela*). Parcely vyberte na základě atributu *Nadřazené katastrální území*.
+### 3. Chráněná území v okolí obce
 
-Dle atributů v tabulce níže vypočítejte pro data nový sloupec *TYP_VYUZITI*, na základě kterého vrstvu následně vhodně vizualizujte. Číselníky pro přiřazení kódů: [Způsob využití pozemku](https://www.cuzk.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Ciselniky-ISKN/Ciselniky-k-nemovitosti/Zpusob-vyuziti-pozemku.aspx), [Kód druhu pozemku](https://www.cuzk.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Ciselniky-ISKN/Ciselniky-k-nemovitosti/Druh-pozemku.aspx). Závěrem proveďte *Dissolve* dle atributu *TYP_VYUZITI*.
+- Zjistěte, zda se na území zadané obce a v 20 km kolem ní nachází celou plochou maloplošné zvláště chráněné území (zdroj: ZABAGED). 
+
+- Pokud ano, zobrazte jej v mapě jako samostatnou vrstvu. Zobrazte názvy vybraných území (záložka Labeling -> Field: NAZEV)
+
+### 4. Vytvoření vrstvy využití pozemků
+
+- Vytvořte samostatnou vrstvu, která bude obsahovat data způsobu využití pozemku **pro katastrální území**, ve kterém leží zadaný bod (zdroj: RÚIAN – vrstva *Parcela*). Parcely vyberte na základě atributu *Nadřazené katastrální území*.
+
+- Dle atributů v tabulce níže vypočítejte pro data nový sloupec *TYP_VYUZITI*, na základě kterého vrstvu následně vhodně vizualizujte. Číselníky pro přiřazení kódů: [Způsob využití pozemku](https://www.cuzk.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Ciselniky-ISKN/Ciselniky-k-nemovitosti/Zpusob-vyuziti-pozemku.aspx), [Kód druhu pozemku](https://www.cuzk.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Ciselniky-ISKN/Ciselniky-k-nemovitosti/Druh-pozemku.aspx). Závěrem proveďte *Dissolve* dle atributu *TYP_VYUZITI*.
 
 ???+ note "&nbsp;<span style="color:#448aff">Nápověda</span>"
       Data se vhodně protřídí dle kódů níže pomocí funkce *Select by attributes* (využití spojky AND pro určení kódů z obou sloupců *SC_D_POZEMKU* a *SC_ZP_VYUZITI_POZ* najednou). Takto vybraným plochám se následně přiřadí nový atribut. 
@@ -68,46 +80,69 @@ Dle atributů v tabulce níže vypočítejte pro data nový sloupec *TYP_VYUZITI
 | komunikace   | 3, 4 , 14 | 14, 15, 16, 17|
 | ostatní   | 3, 4 , 14 | vše kromě 14, 15, 16, 17|
 
+### 5. Georeferencování SMO5
 
-**5.** Georeferencujte rastry Státní mapy 1 : 5 000 – odvozené (SMO5) z 50. let 20. století. Najdete je na disku ```S:\K155\Public\data\GIS\SMO5```. Překopírujte si je na disk počítače.
+- Georeferencujte rastry Státní mapy 1 : 5 000 – odvozené (SMO5) z 50. let 20. století. Najdete je na disku ```S:\K155\Public\data\GIS\SMO5```. Překopírujte si je na disk počítače.
 
-Georeferencujte pouze rastry, na kterých se nachází katastrální území, ve kterém leží zadaný bod. Potřebné rastry vyhledáte podle názvu mapových listů, které naleznete ve vrstvě Klad_SMO5: ```S:\K155\Public\155GIS1\Klad_SMO5```.
+- Georeferencujte pouze rastry, na kterých se nachází katastrální území, ve kterém leží zadaný bod. Potřebné rastry vyhledáte podle názvu mapových listů, které naleznete ve vrstvě Klad_SMO5: ```S:\K155\Public\155GIS1\Klad_SMO5```.
 
-Z georeferencovaných rastrů vytvořte mozaiku. Rastrovou mapu SMO5 neexportujte do výsledné webové aplikace.
+- Z georeferencovaných rastrů vytvořte mozaiku. Rastrovou mapu SMO5 neexportujte do výsledné webové aplikace.
 
-**6.** Na podkladu SMO5 vektorizujte celé katastrální území, ve kterém leží zadaný bod. Tato data následně slučte na základě typů využití ploch (funkce *Dissolve*). 
+### 6. Vektorizace využití ploch SMO5
+- Na podkladu SMO5 vektorizujte celé katastrální území, ve kterém leží zadaný bod. Tato data následně slučte na základě typů využití ploch (funkce *Dissolve*). 
 
-Rozlišujte následující typy využití ploch (stejně jako v bodě 5 pro data z RÚIAN): 
+- Rozlišujte následující typy využití ploch (stejně jako v bodě 5 pro data z RÚIAN): 
 
-- orná půda
+    - orná půda
 
-- lesní půda
+    - lesní půda
 
-- trvalý travní porosty (louky, pastviny)
+    - trvalý travní porosty (louky, pastviny)
 
-- zahrada
+    - zahrada
 
-- vodstvo (řeky, potoky, rybníky), nevektorizujte malé vodní toky vyznačené pouze liniově
+    - vodstvo (řeky, potoky, rybníky), nevektorizujte malé vodní toky vyznačené pouze liniově
 
-- zastavěná plocha
+    - zastavěná plocha
 
-- nádvoří (okolí domů, neoznačené zahrady, veřejné prostory v intravilánu)
+    - nádvoří (okolí domů, neoznačené zahrady, veřejné prostory v intravilánu)
 
-- komunikace (cesty, silnice, železnice)
+    - komunikace (cesty, silnice, železnice)
 
-- ostatní lomy, neúrodná půda apod.
+    - ostatní lomy, neúrodná půda apod.
 
 <figure markdown>
 ![SMO5_legenda](../assets/cviceni6/SMO5_legenda.png "Legenda SMO5"){ width="600" }
     <figcaption>Značkový klíč SMO5</figcaption>
 </figure>
 
-**7.** Vektorizaci SMO5 topologicky zkontrolujte dle pravidel *Must Not Have Gaps (Area)*, *Must Not Overlap With (Area-Area)* a *Must Not Overlap (Area)*.
+### 7. Kontrola topologie vektorizace
+- Proveďte topologickou kontrolu vektorizovaných dat SMO5 podle pravidel:
 
-**8.** Ve výsledné aplikaci porovnejte vývoj využití krajiny v 50. letech 20. století (vektorizace z SMO5) se současností (RÚIAN – vrstva *Parcela*). Způsob porovnání zvolte dle vlastního uvážení (posuvník v aplikaci, nová vrstva s vypočtenými rozdíly apod.).
+    - Must Not Have Gaps (Area) – nesmí být mezery mezi plochami.
 
-**9.** Jako samostatnou vrstvu do svého projektu připojte WMS, WMTS či WFS službu dle vašeho výběru (např. historickou mapu, ortofoto či katastrální mapu). Tato vrstva musí být součástí výsledné mapové aplikace.
+    - Must Not Overlap With (Area-Area) – plochy se nesmí překrývat.
 
-**10.** V zadané obci najděte pomocí analýzy digitálního modelu reliéfu nejnižší a nejvyšší bod. Body vyznačte do mapy a zobrazte viditělně v mapě jejich nadmořskou výšku (Label). Pro analýzu si vyberte buď DMR4G nebo DMR5G - výběr při prezentaci práce odůvodněte.
+    - Must Not Overlap (Area) – jednotlivé třídy využití se nesmí překrývat.
 
-**11.** Vytvořte webovou mapovou aplikaci a vyexportujte do ní požadované vrstvy. Zároveň do aplikace přidejte obecné informace o obci (popis lokality či vývoj počtu obyvatel). 
+### 8. Porovnání vývoje využití krajiny (50. léta a současnost)
+
+- Ve webové aplikaci porovnejte vývoj využití krajiny v 50. letech 20. století (vektorizace z SMO5) se současností (RÚIAN – vrstva *Parcela*). Způsob porovnání zvolte dle vlastního uvážení (posuvník v aplikaci, nová vrstva s vypočtenými rozdíly apod.).
+
+### 9. Přidání online mapové služby (WMS, WMTS, WFS)
+
+- Přidejte jednu online mapovou službu dle vlastního výběru (např. historická mapa, ortofoto, katastrální mapa).
+
+- Tato vrstva musí být součástí výsledné mapové aplikace.
+
+### 10. Analýza nejvyššího a nejnižšího bodu obce
+
+- Pomocí digitálního modelu reliéfu (DMR4G nebo DMR5G) zjistěte nejnižší a nejvyšší bod obce. Pro analýzu si vyberte buď DMR4G nebo DMR5G - výběr při prezentaci práce odůvodněte.
+
+- Body vyznačte do mapy a zobrazte viditělně v mapě jejich nadmořskou výšku (Label). 
+
+### 11. Tvorba webové mapové aplikace
+
+- Vytvořte webovou mapovou aplikaci a vyexportujte do ní požadované vrstvy.
+
+- Přidejte obecné informace o obci, např. popis lokality či vývoj počtu obyvatel.
