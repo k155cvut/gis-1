@@ -26,13 +26,27 @@ Dotazy či připomínky k semestrální práci směřujte sem: *frantisek.muzik@
 
 **Pro zadané území vypracujte následující úkoly:**
 
-**1.** Zjistěte v jaké obci se nachází zadaný definiční bod. Z databáze [RÚIAN](https://k155cvut.github.io/gis-1/data/#ruian) tuto obec vyberte a vyexportujte ji do samostatné vrstvy.
+**1.** Zjistěte v jaké obci se nachází zadaný definiční bod. Z databáze [RÚIAN](https://k155cvut.github.io/gis-1/data/#ruian) tuto obec vyberte a vyexportujte ji do samostatné vrstvy. 
+
+Dále zjistěte jaká katastrální území se nachází na území vaší obce a v jakém z nich leží zadaný bod. Všechna katastrální území spadající do obce také z RÚIANu vyexportujte do samosatné vrstvy.
+
+???+ note "&nbsp;<span style="color:#448aff">Nápověda</span>"
+    Pro vložení souřadnic bodu lze použít například funkci Go to XY, která se nachází v záložce Map. 
+
+    **Pozor** – je nutné změnit jednotky na metry. Před vkládáním souřadnic si zkontrolujte správně nastavený souřadnicový systém mapy.
+
+<figure markdown>
+![SMO5_legenda](../assets/sempr/Add-xy.png){ width="800" }
+    <figcaption>Vložení souřadnic bodu pomocí funkce Go to XY</figcaption>
+</figure>
 
 **2.** Určete počet adresních míst na území dané obce (zdroj: RÚIAN).
 
-**3.** Zjistěte, zda se na území zadané obce a v 20 km kolem ní nachází chráněné území (zdroj: ZABAGED). Pokud ano, zobrazte jej v mapě jako samostatnou vrstvu. 
+**3.** Zjistěte, zda se na území zadané obce a v 20 km kolem ní nachází celou plochou maloplošné zvláště chráněné území (zdroj: ZABAGED). Pokud ano, zobrazte jej v mapě jako samostatnou vrstvu. Zobrazte názvy vybraných území (záložka Labeling -> Field: NAZEV)
 
-**4.** Vytvořte samostatnou vrstvu, která bude obsahovat data způsobu využití pozemku (zdroj: RÚIAN – vrstva *Parcela*). Na základě atributů v tabulce níže vypočítejte pro data nový sloupec *TYP_VYUZITI*, na základě kterého vrstvu následně vhodně vizualizujte. Číselníky pro přiřazení kódů: [Způsob využití pozemku](https://www.cuzk.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Ciselniky-ISKN/Ciselniky-k-nemovitosti/Zpusob-vyuziti-pozemku.aspx), [Kód druhu pozemku](https://www.cuzk.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Ciselniky-ISKN/Ciselniky-k-nemovitosti/Druh-pozemku.aspx). Závěrem proveďte *Dissolve* dle atributu *TYP_VYUZITI*.
+**4.** Vytvořte samostatnou vrstvu, která bude obsahovat data způsobu využití pozemku **pro katastrální území**, ve kterém leží zadaný bod (zdroj: RÚIAN – vrstva *Parcela*). Parcely vyberte na základě atributu *Nadřazené katastrální území*.
+
+Dle atributů v tabulce níže vypočítejte pro data nový sloupec *TYP_VYUZITI*, na základě kterého vrstvu následně vhodně vizualizujte. Číselníky pro přiřazení kódů: [Způsob využití pozemku](https://www.cuzk.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Ciselniky-ISKN/Ciselniky-k-nemovitosti/Zpusob-vyuziti-pozemku.aspx), [Kód druhu pozemku](https://www.cuzk.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Ciselniky-ISKN/Ciselniky-k-nemovitosti/Druh-pozemku.aspx). Závěrem proveďte *Dissolve* dle atributu *TYP_VYUZITI*.
 
 ???+ note "&nbsp;<span style="color:#448aff">Nápověda</span>"
       Data se vhodně protřídí dle kódů níže pomocí funkce *Select by attributes* (využití spojky AND pro určení kódů z obou sloupců *SC_D_POZEMKU* a *SC_ZP_VYUZITI_POZ* najednou). Takto vybraným plochám se následně přiřadí nový atribut. 
@@ -55,9 +69,13 @@ Dotazy či připomínky k semestrální práci směřujte sem: *frantisek.muzik@
 | ostatní   | 3, 4 , 14 | vše kromě 14, 15, 16, 17|
 
 
-**5.** Georeferencujte rastry Státní mapy 1 : 5 000 – odvozené (SMO5) z 50. let 20. století. Najdete je na disku S. Georeferencujte pouze rastry, kterých se dotýká území v okruhu 500 metrů od definičního bodu obce. Ten vypočítejte jako těžiště polygonu obce (musí být uvnitř polygonu). Z georeferencovaných rastrů vytvořte mozaiku. Rastrovou mapu SMO5 neexportujte do výsledné webové aplikace.
+**5.** Georeferencujte rastry Státní mapy 1 : 5 000 – odvozené (SMO5) z 50. let 20. století. Najdete je na disku ```S:\K155\Public\data\GIS\SMO5```. Překopírujte si je na disk počítače.
 
-**6.** Na podkladu SMO5 vektorizujte území v okruhu 500 metrů od zadaného bodu. Tato data následně slučte na základě typů využití ploch (funkce Dissolve). 
+Georeferencujte pouze rastry, na kterých se nachází katastrální území, ve kterém leží zadaný bod. Potřebné rastry vyhledáte podle názvu mapových listů, které naleznete ve vrstvě Klad_SMO5: ```S:\K155\Public\155GIS1\Klad_SMO5```.
+
+Z georeferencovaných rastrů vytvořte mozaiku. Rastrovou mapu SMO5 neexportujte do výsledné webové aplikace.
+
+**6.** Na podkladu SMO5 vektorizujte celé katastrální území, ve kterém leží zadaný bod. Tato data následně slučte na základě typů využití ploch (funkce *Dissolve*). 
 
 Rozlišujte následující typy využití ploch (stejně jako v bodě 5 pro data z RÚIAN): 
 
