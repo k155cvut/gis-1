@@ -28,39 +28,40 @@ Dotazy či připomínky k semestrální práci směřujte sem: *frantisek.muzik@
 
 ### 1. Identifikace obce a katastrálních území
 
-- Zjistěte v jaké obci se nachází zadaný definiční bod. 
+- Zjistěte v jaké obci se nachází zadaný definiční bod. Import Excelu s body můžete provést např. funkcí XY Table to Point. Následně si vyexportujte váš zadaný bod do samostatné vrstvy.
 
 - Vyberte odpovídající obec z databáze [RÚIAN](https://k155cvut.github.io/gis-1/data/#ruian) a exportujte ji jako samostatnou vrstvu.
 
 - Dále zjistěte jaká katastrální území se nachází na území vaší obce a v jakém z nich leží zadaný bod. Všechna katastrální území spadající do obce také z RÚIANu vyexportujte do samosatné vrstvy.
 
-???+ note "&nbsp;<span style="color:#448aff">Nápověda</span>"
-    Pro vložení souřadnic bodu lze použít například funkci Go to XY, která se nachází v záložce Map. 
-
-    **Pozor** – je nutné změnit jednotky na metry. Před vkládáním souřadnic si zkontrolujte správně nastavený souřadnicový systém mapy.
-
-<figure markdown>
-![SMO5_legenda](../assets/sempr/Add-xy.png){ width="800" }
-    <figcaption>Vložení souřadnic bodu pomocí funkce Go to XY</figcaption>
-</figure>
-
 ### 2. Adresní místa
 
-- Určete počet adresních míst na území dané obce (zdroj: RÚIAN).
+- Určete počet adresních míst na území dané obce (zdroj: RÚIAN). Adresní místa zobrazte v mapě.
+
+- Vyberte stavební objekty v obci (zdroj: RÚIAN). Tyto objekty vhodně vizualizujte dle připojení na Připojení na rozvod plynu.
+
+|KÓD| Připojení na rozvod plynu               |
+|---|----------------------|
+| 1 |Plyn z veřejné sítě   |
+| 2 |Plyn z dom. zásobníku |
+| 3 |Bez plynu             |
+| 8 |Nedefinováno          |
+| 9 |Nezjištěno            |
+| 51|Plyn v domě           |
 
 ### 3. Chráněná území v okolí obce
 
-- Zjistěte, zda se na území zadané obce a v 20 km kolem ní nachází celou plochou maloplošné zvláště chráněné území (zdroj: ZABAGED). 
+- Zjistěte, zda se na území zadané obce a v 10 km kolem ní nachází celou plochou maloplošné zvláště chráněné území (zdroj: ZABAGED). 
 
 - Pokud ano, zobrazte jej v mapě jako samostatnou vrstvu. Zobrazte názvy vybraných území (záložka Labeling -> Field: NAZEV)
 
 ### 4. Vytvoření vrstvy využití pozemků
 
-- Vytvořte samostatnou vrstvu, která bude obsahovat data způsobu využití pozemku **pro katastrální území**, ve kterém leží zadaný bod (zdroj: RÚIAN – vrstva *Parcela*). Parcely vyberte na základě atributu *Nadřazené katastrální území*.
+- Vytvořte samostatnou vrstvu, která bude obsahovat data způsobu využití pozemku **pro kružnici o poloměru 700 metrů kolem zadaného bodu** (zdroj: RÚIAN – vrstva *Parcela*). Pro urychlení výpočtu nejprve vyberte parcely na základě atributu *Nadřazené katastrální území*.
 
 - Dle atributů v tabulce níže vypočítejte pro data nový sloupec *TYP_VYUZITI*, na základě kterého vrstvu následně vhodně vizualizujte. Číselníky pro přiřazení kódů: [Způsob využití pozemku](https://www.cuzk.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Ciselniky-ISKN/Ciselniky-k-nemovitosti/Zpusob-vyuziti-pozemku.aspx), [Kód druhu pozemku](https://www.cuzk.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Ciselniky-ISKN/Ciselniky-k-nemovitosti/Druh-pozemku.aspx). Závěrem proveďte *Dissolve* dle atributu *TYP_VYUZITI*.
 
-???+ note "&nbsp;<span style="color:#448aff">Nápověda</span>"
+!!! note "&nbsp;<span style="color:#448aff">Nápověda</span>"
       Data se vhodně protřídí dle kódů níže pomocí funkce *Select by attributes* (využití spojky AND pro určení kódů z obou sloupců *SC_D_POZEMKU* a *SC_ZP_VYUZITI_POZ* najednou). Takto vybraným plochám se následně přiřadí nový atribut. 
       
       Například pro určení orné půdy vybereme *SC_D_POZEMKU* = 2. Pro určení zastavěné plochy už budeme muset využít oba sloupce s kódy pozemků, a tedy musíme vybrat *SC_D_POZEMKU* = 13 a *SC_ZP_VYUZITI_POZ*  *is Null*
@@ -139,7 +140,6 @@ Dotazy či připomínky k semestrální práci směřujte sem: *frantisek.muzik@
 
 - Pomocí digitálního modelu reliéfu (DMR4G nebo DMR5G) zjistěte nejnižší a nejvyšší bod obce. Pro analýzu si vyberte buď DMR4G nebo DMR5G - výběr při prezentaci práce odůvodněte.
 
-- Body vyznačte do mapy a zobrazte viditělně v mapě jejich nadmořskou výšku (Label). 
 
 ### 11. Tvorba webové mapové aplikace
 
