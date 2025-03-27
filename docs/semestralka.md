@@ -146,3 +146,6 @@ Dotazy či připomínky k semestrální práci směřujte sem: *frantisek.muzik@
 - Vytvořte webovou mapovou aplikaci a vyexportujte do ní požadované vrstvy.
 
 - Přidejte obecné informace o obci, např. popis lokality či vývoj počtu obyvatel.
+
+[Ukázková aplikace](https://arcg.is/1SenW80){ .md-button .md-button--primary }
+{: .button_array}
