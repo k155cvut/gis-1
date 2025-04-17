@@ -90,7 +90,7 @@ Dotazy či připomínky k semestrální práci směřujte sem: *frantisek.muzik@
 - Z georeferencovaných rastrů vytvořte mozaiku. Rastrovou mapu SMO5 neexportujte do výsledné webové aplikace.
 
 ### 6. Vektorizace využití ploch SMO5
-- Na podkladu SMO5 vektorizujte celé katastrální území, ve kterém leží zadaný bod. Tato data následně slučte na základě typů využití ploch (funkce *Dissolve*). 
+- Na podkladu SMO5 vektorizujte **území ohraničené kružnicí o poloměru 700 metrů kolem zadaného bodu**. Tato data následně slučte na základě typů využití ploch (funkce *Dissolve*). 
 
 - Rozlišujte následující typy využití ploch (stejně jako v bodě 5 pro data z RÚIAN): 
 
