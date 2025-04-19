@@ -32,7 +32,7 @@ Nahrajte do prostředí QGIS vstupní geografická data. Pro jednotlivé vrstvy 
 
 !!! warning "Důležité"
 
-    Nejprve vytvoříme na disku novou složku, do které posléze uložíme QGIS projekt a všechny lokální datové zdroje (v našem případě to bude databázový formát GeoPackage).
+    Nejprve vytvoříme na disku novou složku, do které posléze uložíme QGIS projekt a všechny lokální datové zdroje (v našem případě to bude databázový formát OGC GeoPackage).
 
 #### RÚIAN
 
@@ -65,31 +65,30 @@ Provedeme v projektu následující změny:
     
     ![](../assets/cviceni10/ruian_csv.png "Přidání CSV tabulek do projektu")
     
-![](../assets/cviceni10/ruian_csv_join.png "Připojení CSV dat k vektorové vrstvě")
-
 ![](../assets/cviceni10/ruian_csv_detail.png "Připojená CSV data")
 
-- podobně přípojíme číselník k vrstvě "Stavební objekty"
-    - [SC_ZP_VYUZITI_BUD](https://www.cuzk.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Ciselniky-ISKN/Ciselniky-k-nemovitosti/Zpusob-vyuziti-stavby.aspx)
-    
 !!! task-fg-color "Úkol"
 
-    Připojte další číselníky jako např. [SC_ZP_VYUZITI_POZ](https://www.cuzk.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Ciselniky-ISKN/Ciselniky-k-nemovitosti/Zpusob-vyuziti-pozemku.aspx) a další.
+    Podobně přípojíme číselník k vrstvě "Stavební objekty": [SC_ZP_VYUZITI_BUD](https://www.cuzk.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Ciselniky-ISKN/Ciselniky-k-nemovitosti/Zpusob-vyuziti-stavby.aspx)
+
+    ![](../assets/cviceni10/ruian_csv_join.png "Připojení CSV dat k vektorové vrstvě")
+
+    Případně i další další číselníky jako např. [SC_ZP_VYUZITI_POZ](https://www.cuzk.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Ciselniky-ISKN/Ciselniky-k-nemovitosti/Zpusob-vyuziti-pozemku.aspx) a další.
     
 - na základě připojených číselníků nastavíme symbologii vrstev
 
 ![](../assets/cviceni10/ruian_style.png "Nastavený styl parcel")
+
+![](../assets/cviceni10/ruian_style_buildings.png "Nastavení stylu u stavebních objektů")
+
+- popisky nastavme tak, aby se zobrazovaly od měřítka 1:1000 (parcelní číslo, číslo domovní)
 
 !!! tip
 
     U stavebních objektů můžeme nastavit číslo domovní pomocí funkce `regexp_substr`:
     
     ![](../assets/cviceni10/ruian_regex.png "Popisky stavebních objektů")
-    
-    Popisky nastavme tak, aby se zobrazovaly od měřítka 1:1000 (podobně jako u parcel).
-    
-![](../assets/cviceni10/ruian_style_buildings.png "Nastavení stylu u stavebních objektů")
-    
+
 - u vrstvy "Základní sídelní jednotky" nastavíme popisky podle atributu "Nazev" (pouze do měřítka 1:5000)
 - nastavíme cílové pořadí vrstev
 
