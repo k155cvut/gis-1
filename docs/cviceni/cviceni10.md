@@ -32,7 +32,7 @@ Nahrajte do prostředí QGIS vstupní geografická data. Pro jednotlivé vrstvy 
 
 !!! warning "Důležité"
 
-    Nejprve vytvoříme na disku novou složku, do které posléze uložíme QGIS projekt a všechny lokální datové zdroje (v našem případě to bude databázový formát GeoPackage).
+    Nejprve vytvoříme na disku novou složku, do které posléze uložíme QGIS projekt a všechny lokální datové zdroje (v našem případě to bude databázový formát OGC GeoPackage).
 
 #### RÚIAN
 
@@ -65,16 +65,15 @@ Provedeme v projektu následující změny:
     
     ![](../assets/cviceni10/ruian_csv.png "Přidání CSV tabulek do projektu")
     
-![](../assets/cviceni10/ruian_csv_join.png "Připojení CSV dat k vektorové vrstvě")
-
 ![](../assets/cviceni10/ruian_csv_detail.png "Připojená CSV data")
 
-- podobně přípojíme číselník k vrstvě "Stavební objekty"
-    - [SC_ZP_VYUZITI_BUD](https://www.cuzk.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Ciselniky-ISKN/Ciselniky-k-nemovitosti/Zpusob-vyuziti-stavby.aspx)
-    
 !!! task-fg-color "Úkol"
 
-    Připojte další číselníky jako např. [SC_ZP_VYUZITI_POZ](https://www.cuzk.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Ciselniky-ISKN/Ciselniky-k-nemovitosti/Zpusob-vyuziti-pozemku.aspx) a další.
+    Podobně přípojíme číselník k vrstvě "Stavební objekty": [SC_ZP_VYUZITI_BUD](https://www.cuzk.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Ciselniky-ISKN/Ciselniky-k-nemovitosti/Zpusob-vyuziti-stavby.aspx)
+
+    ![](../assets/cviceni10/ruian_csv_join.png "Připojení CSV dat k vektorové vrstvě")
+
+    Případně i další další číselníky jako např. [SC_ZP_VYUZITI_POZ](https://www.cuzk.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Ciselniky-ISKN/Ciselniky-k-nemovitosti/Zpusob-vyuziti-pozemku.aspx) a další.
     
 - na základě připojených číselníků nastavíme symbologii vrstev
 
@@ -82,15 +81,20 @@ Provedeme v projektu následující změny:
 
 !!! tip
 
-    U stavebních objektů můžeme nastavit číslo domovní pomocí funkce `regexp_substr`:
+    Ukázkové styly ke stažení [zde](https://geo.fsv.cvut.cz/vyuka/155gis1/gis1_cv10_styly.zip).
+
+![](../assets/cviceni10/ruian_style_buildings.png "Nastavení stylu u stavebních objektů")
+
+- popisky nastavme tak, aby se zobrazovaly od měřítka 1:1000 (parcelní číslo, číslo domovní)
+
+!!! tip
+
+    U stavebních objektů můžeme nastavit číslo domovní pomocí funkce `regexp_substr`: `replace(regexp_substr("CisloDomovni", '(:\\d+)'), ':', '')`
     
     ![](../assets/cviceni10/ruian_regex.png "Popisky stavebních objektů")
-    
-    Popisky nastavme tak, aby se zobrazovaly od měřítka 1:1000 (podobně jako u parcel).
-    
-![](../assets/cviceni10/ruian_style_buildings.png "Nastavení stylu u stavebních objektů")
-    
-- u vrstvy "Základní sídelní jednotky" nastavíme popisky podle atributu "Nazev" (pouze do měřítka 1:5000)
+
+- u vrstvy "Základní sídelní jednotky" nastavíme popisky podle atributu "Nazev" (pouze do měřítka 1:5000), nastavíme podklad textu
+
 - nastavíme cílové pořadí vrstev
 
 ![](../assets/cviceni10/ruian_result.png "Pořadí vrstev RÚIAN")
@@ -120,8 +124,8 @@ Přidané WMS služby nahrajeme do mapového okna.
     ![](../assets/cviceni10/cuzk_wms_group.png "Seskupení WMS vrstev")
 
 Dalším z datových zdrojů mohou být WMS služby poskytované agenturou
-[CENIA](https://geoportal.gov.cz/arcgis/rest/services/CENIA). Pro náš
-účel vyberme III. vojenské mapování: `https://geoportal.gov.cz/arcgis/services/CENIA/cenia_rt_III_vojenske_mapovani/MapServer/WMSServer`:
+[CENIA](https://micka.cenia.cz/record/basic/50211b47-f954-4258-9b61-1951c0a80137). Pro náš
+účel vyberme III. vojenské mapování: `https://gis.cenia.cz/mapcache/III_vojenske_mapovani/wmts?SERVICE=WMTS&REQUEST=GetCapabilities`:
 
 ![](../assets/cviceni10/wms_cenia.png "Vrstva III. vojenského mapování")
 
@@ -130,11 +134,9 @@ Dalším z datových zdrojů mohou být WMS služby poskytované agenturou
     Přidejte do projektu další zdroje dat jako např. Stínovaný model reliéfu - `https://ags.cuzk.cz/arcgis2/services/dmr5g/ImageServer/WMSServer`:
     
     - dmr5g:GrayscaleHillshadeZ10
-    - dmr5g:SlopeRGBMap
    
     Dojem plastičnosti můžeme dosáhnout kombinací Základní topografické
-    mapy při dané míře průhlednosti a vrstvy
-    "dmr5g:SlopeRGBMap". Ukázka vizualizace při míře transparentnosti
+    mapy při dané míře průhlednosti. Ukázka vizualizace při míře transparentnosti
     75%:
    
     ![](../assets/cviceni10/cuzk_ztm5.png "Ukázka vizualizace Základní topografické mapy")
@@ -147,9 +149,9 @@ poskytované ČÚZK. Vybereme následující vrstvy z datového zdroje
 "Stahovací služba WFS - ZABAGED® - polohopis"
 (`https://ags.cuzk.cz/arcgis/services/ZABAGED_POLOHOPIS/MapServer/WFSServer`):
 
-- `zbg:Lesní_půda_se_stromy_kategorizovaná__plocha_`
-- `zbg:Vodní_plocha`
-- `zbg:Vodní_tok`
+- `Lesní_půda_se_stromy_kategorizovaná__plocha_`
+- `Vodní_plocha`
+- `Vodní_tok`
 
 ![](../assets/cviceni10/zabaged_layers.png "Seznam WFS vrstev ZABAGED")
 
@@ -159,7 +161,7 @@ U jednotlivých vrstev nastavíme symbologii a vrstvy přejmenujeme:
 
 !!! warning "Důležité"
 
-    Vrstvy, u kterých budeme nastavovat kategorizovaný styl doporučujeme stáhnout do lokální databáze ve formátu GeoPackage:
+    Vrstvy, u kterých budeme nastavovat kategorizovaný styl doporučujeme stáhnout do lokální databáze ve formátu GeoPackage (`Export > Save features as`):
 
     ![](../assets/cviceni10/zabaged_db.png "Uložení dat do nového GeoPackage")
 
@@ -179,22 +181,22 @@ topografická mapa:
 
     Přidejte do projektu další vhodné WFS vrstvy z datového zdroje ZABAGED, jako např.:
     
-    - `zbg:Stožár_elektrického_vedení`
-    - `zbg:Mohyla__pomník__náhrobek`
-    - `zbg:Kříž__sloup_kulturního_významu`
-    - `zbg:Úřad_veřejné_správy_-_definiční_bod`
-    - `zbg:Škola_-_definiční_bod`
-    - `zbg:Hasičská_stanice__zbrojnice_-_definiční_bod`
-    - `zbg:Pošta_-_definiční_bod`
-    - `zbg:Elektrické_vedení`
-    - `zbg:Silnice__dálnice`
-    - `zbg:Vodní_tok`
-    - `zbg:Cesta`
-    - `zbg:Železniční_trať`
-    - `zbg:Hřbitov`
-    - `zbg:Skládka`
-    - `zbg:Maloplošné_zvlástě_chráněné_území`
-    - `zbg:Vinice`
+    - `Stožár_elektrického_vedení`
+    - `Mohyla__pomník__náhrobek`
+    - `Kříž__sloup_kulturního_významu`
+    - `Úřad_veřejné_správy_-_definiční_bod`
+    - `Škola_-_definiční_bod`
+    - `Hasičská_stanice__zbrojnice_-_definiční_bod`
+    - `Pošta_-_definiční_bod`
+    - `Elektrické_vedení`
+    - `Silnice__dálnice`
+    - `Vodní_tok`
+    - `Cesta`
+    - `Železniční_trať`
+    - `Hřbitov`
+    - `Skládka`
+    - `Maloplošné_zvlástě_chráněné_území`
+    - `Vinice`
 
     Výsledek může pro zájmovou oblast vypadat následovně:
 
@@ -249,24 +251,24 @@ topografická mapa:
 
     url = "https://ags.cuzk.cz/arcgis/services/ZABAGED_POLOHOPIS/MapServer/WFSServer"
     layers = [
-        'zbg:Stožár_elektrického_vedení', 
-        'zbg:Mohyla__pomník__náhrobek', 
-        'zbg:Kříž__sloup_kulturního_významu', 
-        'zbg:Úřad_veřejné_správy_-_definiční_bod', 
-        'zbg:Škola_-_definiční_bod', 
-        'zbg:Hasičská_stanice__zbrojnice_-_definiční_bod',
-        'zbg:Pošta_-_definiční_bod',
-        'zbg:Elektrické_vedení',
-        'zbg:Silnice__dálnice',
-        'zbg:Vodní_tok',
-        'zbg:Cesta',
-        'zbg:Železniční_trať',
-        'zbg:Hřbitov',
-        'zbg:Skládka',
-        'zbg:Maloplošné_zvlástě_chráněné_území',
-        'zbg:Vinice',
-        'zbg:Lesní_půda_se_stromy_kategorizovaná__plocha_',
-        'zbg:Vodní_plocha',
+        'ZABAGED_POLOHOPIS:Stožár_elektrického_vedení', 
+        'ZABAGED_POLOHOPIS:Mohyla__pomník__náhrobek', 
+        'ZABAGED_POLOHOPIS:Kříž__sloup_kulturního_významu', 
+        'ZABAGED_POLOHOPIS:Úřad_veřejné_správy_-_definiční_bod', 
+        'ZABAGED_POLOHOPIS:Škola_-_definiční_bod', 
+        'ZABAGED_POLOHOPIS:Hasičská_stanice__zbrojnice_-_definiční_bod',
+        'ZABAGED_POLOHOPIS:Pošta_-_definiční_bod',
+        'ZABAGED_POLOHOPIS:Elektrické_vedení',
+        'ZABAGED_POLOHOPIS:Silnice__dálnice',
+        'ZABAGED_POLOHOPIS:Vodní_tok',
+        'ZABAGED_POLOHOPIS:Cesta',
+        'ZABAGED_POLOHOPIS:Železniční_trať',
+        'ZABAGED_POLOHOPIS:Hřbitov',
+        'ZABAGED_POLOHOPIS:Skládka',
+        'ZABAGED_POLOHOPIS:Maloplošné_zvlástě_chráněné_území',
+        'ZABAGED_POLOHOPIS:Vinice',
+        'ZABAGED_POLOHOPIS:Lesní_půda_se_stromy_kategorizovaná__plocha_',
+        'ZABAGED_POLOHOPIS:Vodní_plocha',
     ]
 
     output_path  = os.path.join(QgsProject.instance().readPath("./"), "zabaged.gpkg")
@@ -283,7 +285,7 @@ topografická mapa:
 
     for type_name in layers:
         print(f"Processing {type_name}...")
-        layer_name = type_name.lstrip('zbg:').replace('_', ' ')
+        layer_name = type_name.split(':')[1].replace('_', ' ')
         # remove non-ascii characters
         layer_output = re.sub(r'[^\x00-\x7F]', ' ', layer_name).replace(' ', '_').lower()
 
@@ -304,6 +306,7 @@ topografická mapa:
 
 - [Národní katalog otevřených dat](https://data.gov.cz/datov%C3%A9-sady)
 - [OpenStreetMap](https://wiki.openstreetmap.org/wiki/Cs:Map_Features)
+- ...
 
 !!! task-fg-color "Úkol"
 
@@ -331,7 +334,7 @@ Podklady: [dokumentace Gisquick](https://gisquick.readthedocs.io)
 
     Pro účel výuky budeme používat vlastní instanci publikačního serveru Gisquick provozované na **<http://geo102.fsv.cvut.cz:8083/>**.
 
-Po [přihlášení](http://geo102.fsv.cvut.cz:8083/user/) se objeví profil uživatele:
+Po [přihlášení](http://geo102.fsv.cvut.cz:8083/user/) (`SIGN IN`) se objeví profil uživatele:
 
 ![](../assets/cviceni10/gisquick_new_project.png "Gisquick: nový projekt")
 
@@ -389,13 +392,13 @@ Projdeme jednotlivá nastavení projektu:
 
 A provedeme následující změny v nastavení:
 
-- prostorový rozsah nastavíme z vrstvy "Obce":
+- `Map > Extent`: prostorový rozsah nastavíme z vrstvy "Obce":
 
 <video controls="true" allowfullscreen="true" width=99%>
 <source src="../../assets/cviceni10/gisquick_extent.webm" type="video/webm" markdown="1">
 </video>
     
-- nastavíme vhodnou měřítkovou sadu:
+- `Map > Scale`: nastavíme vhodnou měřítkovou sadu:
 
     ![](../assets/cviceni10/gisquick_scales.png "Gisquick: měřítka")
 
