@@ -306,6 +306,7 @@ topografická mapa:
 
 - [Národní katalog otevřených dat](https://data.gov.cz/datov%C3%A9-sady)
 - [OpenStreetMap](https://wiki.openstreetmap.org/wiki/Cs:Map_Features)
+- ...
 
 !!! task-fg-color "Úkol"
 
@@ -333,7 +334,7 @@ Podklady: [dokumentace Gisquick](https://gisquick.readthedocs.io)
 
     Pro účel výuky budeme používat vlastní instanci publikačního serveru Gisquick provozované na **<http://geo102.fsv.cvut.cz:8083/>**.
 
-Po [přihlášení](http://geo102.fsv.cvut.cz:8083/user/) se objeví profil uživatele:
+Po [přihlášení](http://geo102.fsv.cvut.cz:8083/user/) (`SIGN IN`) se objeví profil uživatele:
 
 ![](../assets/cviceni10/gisquick_new_project.png "Gisquick: nový projekt")
 
@@ -391,13 +392,13 @@ Projdeme jednotlivá nastavení projektu:
 
 A provedeme následující změny v nastavení:
 
-- prostorový rozsah nastavíme z vrstvy "Obce":
+- `Map > Extent`: prostorový rozsah nastavíme z vrstvy "Obce":
 
 <video controls="true" allowfullscreen="true" width=99%>
 <source src="../../assets/cviceni10/gisquick_extent.webm" type="video/webm" markdown="1">
 </video>
     
-- nastavíme vhodnou měřítkovou sadu:
+- `Map > Scale`: nastavíme vhodnou měřítkovou sadu:
 
     ![](../assets/cviceni10/gisquick_scales.png "Gisquick: měřítka")
 
