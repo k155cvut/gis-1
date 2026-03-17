@@ -73,9 +73,9 @@ Dotazy či připomínky k semestrální práci směřujte sem: *frantisek.muzik@
 
 ### 3. Chráněná území v okolí
 
-- Zjistěte, zda se na území vaší obce a v 10 km kolem ní nachází celou plochou maloplošné zvláště chráněné území (zdroj: _:material-layers-triple: [ZABAGED](https://ags.cuzk.gov.cz/arcgis/rest/services/ZABAGED_POLOHOPIS/MapServer)_{.bg}, _:material-layers: Maloplošné zvlástě chráněné území_{.bg}). 
+- Najděte nejbližší maloplošné zvláště chráněné území (zdroj: _:material-layers-triple: [ZABAGED](https://ags.cuzk.gov.cz/arcgis/rest/services/ZABAGED_POLOHOPIS/MapServer)_{.bg}, _:material-layers: Maloplošné zvlástě chráněné území_{.bg}). 
 
-- Pokud ano, zobrazte jej v mapě jako samostatnou vrstvu. Zobrazte názvy vybraných území (záložka Labeling -> Field: NAZEV)
+- Zobrazte jej v mapě jako samostatnou vrstvu. Zobrazte názvy vybraných území (záložka Labeling -> Field: NAZEV)
 
 ---
 
