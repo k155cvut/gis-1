@@ -107,7 +107,7 @@ Dotazy či připomínky k semestrální práci směřujte sem: *frantisek.muzik@
 
 ---
 
-### 5. Georeferencování SMO5
+### 5. Georeferencování císařských otisků
 
 - Pro zadané katastrální území georeferencujte rastry Císařských otisků stabilního katastru (CO) z poloviny 19. století. Najdete je na sdíleném disku ```S:\K155\Public\data\GIS\SP2026_CO```. Vaše zadání si překopírujte na disk svého počítače.
 
@@ -117,7 +117,7 @@ Dotazy či připomínky k semestrální práci směřujte sem: *frantisek.muzik@
 
 ---
 
-### 6. Vektorizace využití ploch SMO5
+### 6. Vektorizace využití ploch CO
 - Na podkladu CO vektorizujte **celé zadané katastrální území**. V případě změny v hranicích katastrálního území vektorizujte pouze prvky spadající do současného vymezení katastru dle  _:material-layers-triple: RÚIAN_{.bg}, _:material-layers: KatastralniUzemi_{.bg}. Tato data následně slučte na základě typů využití ploch (funkce *Dissolve*).  Není tedy nutné samostatně vektorizovat každou parcelu zvlášť, tudíž ideálně provádějte vektorizaci v rámci více sousedících parcel stejného využití.
 
 - Rozlišujte následující typy využití ploch (stejně jako v bodě 5 pro data z RÚIAN): 
@@ -141,7 +141,7 @@ Dotazy či připomínky k semestrální práci směřujte sem: *frantisek.muzik@
     - ostatní lomy, neúrodná půda apod.
 
 <figure markdown>
-![SMO5_legenda](../assets/sempr/legenda-stabilni-katastr.jpg){ width="1000" }
+![CO_legenda](../assets/sempr/legenda-stabilni-katastr.jpg){ width="1000" }
     <figcaption>Značkový klíč Císařských otisků stabilního katastru</figcaption>
 </figure>
 
