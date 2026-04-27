@@ -56,46 +56,31 @@ Výchozí symbologie vrstev je nastavena zásuvným modulem:
     
 Provedeme v projektu následující změny:
 
-- odstraníme vrstvu "Části obcí" a "Adresní body"
-- vypneme vrstvu "Katastrální území"
-- přípojíme k vrstvě "Parcely" číselník (viz [předchozí cvičeni](./cviceni9.md)):   
-    - [SC_D_POZEMKU](https://www.cuzk.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Ciselniky-ISKN/Ciselniky-k-nemovitosti/Druh-pozemku.aspx)
-!!! warning "Důležité"
-    Data načítejte namísto prostého přetažení pomocí dialogu `Layer > Data Source Manager`. V tomto případě se korektně nastaví datové typy sloupců. Kódování znaků nastavíme na `windows-1250`.
-    
-    ![](../assets/cviceni10/ruian_csv.png "Přidání CSV tabulek do projektu")
-    
-![](../assets/cviceni10/ruian_csv_detail.png "Připojená CSV data")
-
-!!! task-fg-color "Úkol"
-
-    Podobně přípojíme číselník k vrstvě "Stavební objekty": [SC_ZP_VYUZITI_BUD](https://www.cuzk.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Ciselniky-ISKN/Ciselniky-k-nemovitosti/Zpusob-vyuziti-stavby.aspx)
-
-    ![](../assets/cviceni10/ruian_csv_join.png "Připojení CSV dat k vektorové vrstvě")
-
-    Případně i další další číselníky jako např. [SC_ZP_VYUZITI_POZ](https://www.cuzk.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Ciselniky-ISKN/Ciselniky-k-nemovitosti/Zpusob-vyuziti-pozemku.aspx) a další.
-    
+- odstraníme vrstvy "Části obcí" a "Adresní body"
+- vypneme vrstvy "Obec" a "Katastrální území"
 - na základě připojených číselníků nastavíme symbologii vrstev
+- změníme symbologii vrstvy "Parcely"
+    - vypneme omezení na vykreslování vrstvy na měřítko 1:10000 (`Properties > Rendering > Scale Dependent Visibility`)
+    - zapneme omezení na vykreslování popisků na měřítko 1:10000 (`Properties > Labels > Rendering > Label options > Properties > Rendering > Scale Dependent Visibility`)
+    - nastavíme kategorizovaný symbol na základě druhu pozemku
+
 
 ![](../assets/cviceni10/ruian_style.png "Nastavený styl parcel")
 
 !!! tip
 
-    Ukázkové styly ke stažení [zde](https://geo.fsv.cvut.cz/vyuka/155gis1/gis1_cv10_styly.zip).
+    Ukázkový styly pro parcely ke stažení [zde](../assets/cviceni10/qgis_parcely_styl.qml).
 
-![](../assets/cviceni10/ruian_style_buildings.png "Nastavení stylu u stavebních objektů")
+!!! task-fg-color "Úkol"
 
-- popisky nastavme tak, aby se zobrazovaly od měřítka 1:1000 (parcelní číslo, číslo domovní)
+    Nastavte styly u dalších vrstev na kategorizavané, např. podle způsobu využití u stavebních objektů.
 
-!!! tip
+- změníme symbologii vrstvy "Základní sídelní jednotky"
+    - nastavte pozadí popisků (`Properties > Labels > Background`)
 
-    U stavebních objektů můžeme nastavit číslo domovní pomocí funkce `regexp_substr`: `replace(regexp_substr("CisloDomovni", '(:\\d+)'), ':', '')`
-    
-    ![](../assets/cviceni10/ruian_regex.png "Popisky stavebních objektů")
+- změňte pořadí vrstev, aby základní sídelní jednotky byly viditelné 
 
-- u vrstvy "Základní sídelní jednotky" nastavíme popisky podle atributu "Nazev" (pouze do měřítka 1:5000), nastavíme podklad textu
-
-- nastavíme cílové pořadí vrstev
+Výsledek může výpadat následovně:
 
 ![](../assets/cviceni10/ruian_result.png "Pořadí vrstev RÚIAN")
 
@@ -108,14 +93,14 @@ https://geoportal.cuzk.cz/(S(ktfz4kwhtke20faayarg2abz))/Default.aspx?mode=TextMe
 služba, zvolíme raději tuto formu. WMTS by měla pozitivně ovlivnit
 rychlost načítání vrstvy.
 
-- ZTM5 - `https://ags.cuzk.cz/arcgis1/rest/services/ZTM/MapServer/WMTS`
-- Ortofoto - `https://ags.cuzk.cz/arcgis1/rest/services/ORTOFOTO/MapServer/WMTS`
+- Základní topografické mapy ČR - `https://ags.cuzk.gov.cz/arcgis1/rest/services/ZTM/MapServer/WMTS`
+- Ortofoto ČR - `https://ags.cuzk.gov.cz/arcgis1/rest/services/ORTOFOTO/MapServer/WMTS`
    
 Služby přidáme pomocí `Layer > Data Source Manager`:
 
 ![](../assets/cviceni10/cuzk_wms.png "Definici WMS služby")
 
-Přidané WMS služby nahrajeme do mapového okna. 
+Přidané WMS služby nahrajeme do mapového okna a nastavíme průhlednost vrstvy parcel na 75% (`Propersties > Symbology > Layer Rendering > Opacity`).
 
 !!! tip
 
