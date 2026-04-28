@@ -56,46 +56,31 @@ Výchozí symbologie vrstev je nastavena zásuvným modulem:
     
 Provedeme v projektu následující změny:
 
-- odstraníme vrstvu "Části obcí" a "Adresní body"
-- vypneme vrstvu "Katastrální území"
-- přípojíme k vrstvě "Parcely" číselník (viz [předchozí cvičeni](./cviceni9.md)):   
-    - [SC_D_POZEMKU](https://www.cuzk.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Ciselniky-ISKN/Ciselniky-k-nemovitosti/Druh-pozemku.aspx)
-!!! warning "Důležité"
-    Data načítejte namísto prostého přetažení pomocí dialogu `Layer > Data Source Manager`. V tomto případě se korektně nastaví datové typy sloupců. Kódování znaků nastavíme na `windows-1250`.
-    
-    ![](../assets/cviceni10/ruian_csv.png "Přidání CSV tabulek do projektu")
-    
-![](../assets/cviceni10/ruian_csv_detail.png "Připojená CSV data")
-
-!!! task-fg-color "Úkol"
-
-    Podobně přípojíme číselník k vrstvě "Stavební objekty": [SC_ZP_VYUZITI_BUD](https://www.cuzk.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Ciselniky-ISKN/Ciselniky-k-nemovitosti/Zpusob-vyuziti-stavby.aspx)
-
-    ![](../assets/cviceni10/ruian_csv_join.png "Připojení CSV dat k vektorové vrstvě")
-
-    Případně i další další číselníky jako např. [SC_ZP_VYUZITI_POZ](https://www.cuzk.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Ciselniky-ISKN/Ciselniky-k-nemovitosti/Zpusob-vyuziti-pozemku.aspx) a další.
-    
+- odstraníme vrstvy "Části obcí" a "Adresní body"
+- vypneme vrstvy "Obec" a "Katastrální území"
 - na základě připojených číselníků nastavíme symbologii vrstev
+- změníme symbologii vrstvy "Parcely"
+    - vypneme omezení na vykreslování vrstvy na měřítko 1:10000 (`Properties > Rendering > Scale Dependent Visibility`)
+    - zapneme omezení na vykreslování popisků na měřítko 1:10000 (`Properties > Labels > Rendering > Label options > Properties > Rendering > Scale Dependent Visibility`)
+    - nastavíme kategorizovaný symbol na základě druhu pozemku
+
 
 ![](../assets/cviceni10/ruian_style.png "Nastavený styl parcel")
 
 !!! tip
 
-    Ukázkové styly ke stažení [zde](https://geo.fsv.cvut.cz/vyuka/155gis1/gis1_cv10_styly.zip).
+    Ukázkový styly pro parcely ke stažení [zde](../assets/cviceni10/qgis_parcely_styl.qml).
 
-![](../assets/cviceni10/ruian_style_buildings.png "Nastavení stylu u stavebních objektů")
+!!! task-fg-color "Úkol"
 
-- popisky nastavme tak, aby se zobrazovaly od měřítka 1:1000 (parcelní číslo, číslo domovní)
+    Nastavte styly u dalších vrstev na kategorizavané, např. podle způsobu využití u stavebních objektů.
 
-!!! tip
+- změníme symbologii vrstvy "Základní sídelní jednotky"
+    - nastavte pozadí popisků (`Properties > Labels > Background`)
 
-    U stavebních objektů můžeme nastavit číslo domovní pomocí funkce `regexp_substr`: `replace(regexp_substr("CisloDomovni", '(:\\d+)'), ':', '')`
-    
-    ![](../assets/cviceni10/ruian_regex.png "Popisky stavebních objektů")
+- změňte pořadí vrstev, aby základní sídelní jednotky byly viditelné 
 
-- u vrstvy "Základní sídelní jednotky" nastavíme popisky podle atributu "Nazev" (pouze do měřítka 1:5000), nastavíme podklad textu
-
-- nastavíme cílové pořadí vrstev
+Výsledek může výpadat následovně:
 
 ![](../assets/cviceni10/ruian_result.png "Pořadí vrstev RÚIAN")
 
@@ -108,14 +93,14 @@ https://geoportal.cuzk.cz/(S(ktfz4kwhtke20faayarg2abz))/Default.aspx?mode=TextMe
 služba, zvolíme raději tuto formu. WMTS by měla pozitivně ovlivnit
 rychlost načítání vrstvy.
 
-- ZTM5 - `https://ags.cuzk.cz/arcgis1/rest/services/ZTM/MapServer/WMTS`
-- Ortofoto - `https://ags.cuzk.cz/arcgis1/rest/services/ORTOFOTO/MapServer/WMTS`
+- Základní topografické mapy ČR - `https://ags.cuzk.gov.cz/arcgis1/rest/services/ZTM/MapServer/WMTS`
+- Ortofoto ČR - `https://ags.cuzk.gov.cz/arcgis1/rest/services/ORTOFOTO/MapServer/WMTS`
    
 Služby přidáme pomocí `Layer > Data Source Manager`:
 
 ![](../assets/cviceni10/cuzk_wms.png "Definici WMS služby")
 
-Přidané WMS služby nahrajeme do mapového okna. 
+Přidané WMS služby nahrajeme do mapového okna.
 
 !!! tip
 
@@ -161,7 +146,7 @@ U jednotlivých vrstev nastavíme symbologii a vrstvy přejmenujeme:
 
 !!! warning "Důležité"
 
-    Vrstvy, u kterých budeme nastavovat kategorizovaný styl doporučujeme stáhnout do lokální databáze ve formátu GeoPackage (`Export > Save features as`):
+    Vrstvy, u kterých budeme nastavovat kategorizovaný styl doporučujeme stáhnout do lokální databáze ve formátu GeoPackage (`Export > Save features as > Map Canvas Extent`):
 
     ![](../assets/cviceni10/zabaged_db.png "Uložení dat do nového GeoPackage")
 
@@ -169,11 +154,11 @@ U jednotlivých vrstev nastavíme symbologii a vrstvy přejmenujeme:
     
     ![](../assets/cviceni10/wfs_download_canvas.png "Stažení dat WFS zájmové oblasti")
 
-    Kategorizované styly jsou ke stažení [zde](https://geo.fsv.cvut.cz/vyuka/155gis1/gis1_cv10_styly.zip).
+    Kategorizované styly jsou ke stažení [zde](../assets/cviceni10/qgis_lesni_puda_styl.qml).
     
 Na závěr nastavme výchozí kompozici. V našem případě jsou parcely
-nastaveny na průhlednost 50%. Na pozadí stínovaná základní
-topografická mapa:
+nastaveny na průhlednost 50% (`Propersties > Symbology > Layer
+Rendering > Opacity`). Na pozadí stínovaná základní topografická mapa:
 
 ![](../assets/cviceni10/project_to_publish.png "Výsledný projekt před publikací")
 
@@ -275,7 +260,7 @@ topografická mapa:
     group_name = "ZABAGED"
 
     # get reference layer
-    layer_extent = QgsProject.instance().mapLayersByName('Obce')[0]
+    layer_extent = QgsProject.instance().mapLayersByName('Obec')[0]
 
     # find/add group into layer tree
     root = QgsProject.instance().layerTreeRoot()
@@ -312,11 +297,11 @@ topografická mapa:
 
     Přidejte do projektu vrstvu "Občanské vybavenosti" ([amenity](https://wiki.openstreetmap.org/wiki/Cs:Map_Features#Ob%C4%8Dansk%C3%A1_vybavenost_(Amenity))). 
     
-    Doinstalujte do QGISu zásuvný modul QuickOSM a pomocí něj vytvořte vrstvu občanské vybavenosti (rozsah území nastavte na základě vrstvy "Obce"):
+    Doinstalujte do QGISu zásuvný modul QuickOSM a pomocí něj vytvořte vrstvu občanské vybavenosti (rozsah území nastavte na základě vrstvy "Obec"):
     
     ![](../assets/cviceni10/quick_osm.png "QuickOSM")
     
-    Prvky ležící na území obce omezte pomocí nástroje *Clip* a uložte do nové vrstvy. Nastavte kategorizovanou symbologii podle atributu ``amenity`` a přeložte popisky v legendě do češtiny:
+    Prvky ležící na území obce omezte pomocí nástroje *Clip* a uložte do nové vrstvy. Nastavte kategorizovanou symbologii podle atributu ``amenity`` a přeložte popisky v legendě do češtiny (ukázka stylu ke [stažení](../assets/cviceni10/qgis_vybavenost_styl.qml)):
     
     ![](../assets/cviceni10/qgis_osm.png "Vrstva občanské vybavenosti")
     
@@ -392,15 +377,13 @@ Projdeme jednotlivá nastavení projektu:
 
 A provedeme následující změny v nastavení:
 
-- `Map > Extent`: prostorový rozsah nastavíme z vrstvy "Obce":
+- `Map > Extent`: prostorový rozsah nastavíme z vrstvy "Obec":
 
-<video controls="true" allowfullscreen="true" width=99%>
-<source src="../../assets/cviceni10/gisquick_extent.webm" type="video/webm" markdown="1">
-</video>
-    
+    ![](../assets/cviceni10/gisquick_extent.png "Gisquick: prostorový rozsah")
+   
 - `Map > Scale`: nastavíme vhodnou měřítkovou sadu:
 
-    ![](../assets/cviceni10/gisquick_scales.png "Gisquick: měřítka")
+    ![](../assets/cviceni10/gisquick_scales.png "Gisquick: měřítko")
 
 - v záložce `Layers` přesuňte vrstvy ze skupiny "WMS" do `Base Layers` (je nutné přesunout celou skupinu)
 
@@ -429,14 +412,6 @@ které nás přesměruje do mapové aplikace:
 
 Zkusme změnit následující nastavení projektu:
     
-- skryjeme CSV tabulky v záložce `Layers`
-
-![](../assets/cviceni10/gisquick_csv_tables.png "Gisquick: CSV data")
-
-<video controls="true" allowfullscreen="true" width=99%>
-<source src="../../assets/cviceni10/gisquick_visibility.webm" type="video/webm" markdown="1">
-</video>
-
 - nastavíme viditelnost zvolených atributů u vrstvy "Parcely" (kmenové
   číslo, pododdělení čísla, výměra a druh pozemku)
   
@@ -444,11 +419,9 @@ Nejprve v QGISu nastavíme u zvolených atributů aliasy (`Attributes Form` ve v
 
 ![](../assets/cviceni10/qgis_field_alias.png "QGIS: nastavení aliasů")
 
-Změny v QGIS projektu uložíme. V nastavení Gisquick projektu provedeme aktualizaci.
+Změny v QGIS projektu uložíme. V nastavení Gisquick projektu provedeme aktualizaci (`UPDATE`).
 
-<video controls="true" allowfullscreen="true" width=99%>
-<source src="../../assets/cviceni10/gisquick_update.webm" type="video/webm" markdown="1">
-</video>
+![](../assets/cviceni10/gisquick_update.png "Gisquick: aktualizace projektu ")
 
 Viditelnost atributů nastavíme z záložce `Layers`.
 
