@@ -100,7 +100,7 @@ Služby přidáme pomocí `Layer > Data Source Manager`:
 
 ![](../assets/cviceni10/cuzk_wms.png "Definici WMS služby")
 
-Přidané WMS služby nahrajeme do mapového okna a nastavíme průhlednost vrstvy parcel na 75% (`Propersties > Symbology > Layer Rendering > Opacity`).
+Přidané WMS služby nahrajeme do mapového okna.
 
 !!! tip
 
@@ -146,7 +146,7 @@ U jednotlivých vrstev nastavíme symbologii a vrstvy přejmenujeme:
 
 !!! warning "Důležité"
 
-    Vrstvy, u kterých budeme nastavovat kategorizovaný styl doporučujeme stáhnout do lokální databáze ve formátu GeoPackage (`Export > Save features as`):
+    Vrstvy, u kterých budeme nastavovat kategorizovaný styl doporučujeme stáhnout do lokální databáze ve formátu GeoPackage (`Export > Save features as > Map Canvas Extent`):
 
     ![](../assets/cviceni10/zabaged_db.png "Uložení dat do nového GeoPackage")
 
@@ -154,11 +154,11 @@ U jednotlivých vrstev nastavíme symbologii a vrstvy přejmenujeme:
     
     ![](../assets/cviceni10/wfs_download_canvas.png "Stažení dat WFS zájmové oblasti")
 
-    Kategorizované styly jsou ke stažení [zde](https://geo.fsv.cvut.cz/vyuka/155gis1/gis1_cv10_styly.zip).
+    Kategorizované styly jsou ke stažení [zde](../assets/cviceni10/qgis_lesni_puda_styl.qml).
     
 Na závěr nastavme výchozí kompozici. V našem případě jsou parcely
-nastaveny na průhlednost 50%. Na pozadí stínovaná základní
-topografická mapa:
+nastaveny na průhlednost 50% (`Propersties > Symbology > Layer
+Rendering > Opacity`). Na pozadí stínovaná základní topografická mapa:
 
 ![](../assets/cviceni10/project_to_publish.png "Výsledný projekt před publikací")
 
@@ -260,7 +260,7 @@ topografická mapa:
     group_name = "ZABAGED"
 
     # get reference layer
-    layer_extent = QgsProject.instance().mapLayersByName('Obce')[0]
+    layer_extent = QgsProject.instance().mapLayersByName('Obec')[0]
 
     # find/add group into layer tree
     root = QgsProject.instance().layerTreeRoot()
@@ -297,11 +297,11 @@ topografická mapa:
 
     Přidejte do projektu vrstvu "Občanské vybavenosti" ([amenity](https://wiki.openstreetmap.org/wiki/Cs:Map_Features#Ob%C4%8Dansk%C3%A1_vybavenost_(Amenity))). 
     
-    Doinstalujte do QGISu zásuvný modul QuickOSM a pomocí něj vytvořte vrstvu občanské vybavenosti (rozsah území nastavte na základě vrstvy "Obce"):
+    Doinstalujte do QGISu zásuvný modul QuickOSM a pomocí něj vytvořte vrstvu občanské vybavenosti (rozsah území nastavte na základě vrstvy "Obec"):
     
     ![](../assets/cviceni10/quick_osm.png "QuickOSM")
     
-    Prvky ležící na území obce omezte pomocí nástroje *Clip* a uložte do nové vrstvy. Nastavte kategorizovanou symbologii podle atributu ``amenity`` a přeložte popisky v legendě do češtiny:
+    Prvky ležící na území obce omezte pomocí nástroje *Clip* a uložte do nové vrstvy. Nastavte kategorizovanou symbologii podle atributu ``amenity`` a přeložte popisky v legendě do češtiny (ukázka stylu ke [stažení](../assets/cviceni10/qgis_vybavenost_styl.qml)):
     
     ![](../assets/cviceni10/qgis_osm.png "Vrstva občanské vybavenosti")
     
