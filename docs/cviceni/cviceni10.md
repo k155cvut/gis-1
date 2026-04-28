@@ -377,15 +377,13 @@ Projdeme jednotlivá nastavení projektu:
 
 A provedeme následující změny v nastavení:
 
-- `Map > Extent`: prostorový rozsah nastavíme z vrstvy "Obce":
+- `Map > Extent`: prostorový rozsah nastavíme z vrstvy "Obec":
 
-<video controls="true" allowfullscreen="true" width=99%>
-<source src="../../assets/cviceni10/gisquick_extent.webm" type="video/webm" markdown="1">
-</video>
-    
+    ![](../assets/cviceni10/gisquick_extent.png "Gisquick: prostorový rozsah")
+   
 - `Map > Scale`: nastavíme vhodnou měřítkovou sadu:
 
-    ![](../assets/cviceni10/gisquick_scales.png "Gisquick: měřítka")
+    ![](../assets/cviceni10/gisquick_scales.png "Gisquick: měřítko")
 
 - v záložce `Layers` přesuňte vrstvy ze skupiny "WMS" do `Base Layers` (je nutné přesunout celou skupinu)
 
@@ -414,14 +412,6 @@ které nás přesměruje do mapové aplikace:
 
 Zkusme změnit následující nastavení projektu:
     
-- skryjeme CSV tabulky v záložce `Layers`
-
-![](../assets/cviceni10/gisquick_csv_tables.png "Gisquick: CSV data")
-
-<video controls="true" allowfullscreen="true" width=99%>
-<source src="../../assets/cviceni10/gisquick_visibility.webm" type="video/webm" markdown="1">
-</video>
-
 - nastavíme viditelnost zvolených atributů u vrstvy "Parcely" (kmenové
   číslo, pododdělení čísla, výměra a druh pozemku)
   
@@ -429,11 +419,9 @@ Nejprve v QGISu nastavíme u zvolených atributů aliasy (`Attributes Form` ve v
 
 ![](../assets/cviceni10/qgis_field_alias.png "QGIS: nastavení aliasů")
 
-Změny v QGIS projektu uložíme. V nastavení Gisquick projektu provedeme aktualizaci.
+Změny v QGIS projektu uložíme. V nastavení Gisquick projektu provedeme aktualizaci (`UPDATE`).
 
-<video controls="true" allowfullscreen="true" width=99%>
-<source src="../../assets/cviceni10/gisquick_update.webm" type="video/webm" markdown="1">
-</video>
+![](../assets/cviceni10/gisquick_update.png "Gisquick: aktualizace projektu ")
 
 Viditelnost atributů nastavíme z záložce `Layers`.
 
