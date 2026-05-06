@@ -14,6 +14,10 @@ Ukázka publikace dat z prostředí QGIS do webového prostoru pomocí publikač
 - [**QGIS**](https://qgis.org) – jeden z nejpoužívanějších open source GIS nástrojů v praxi
 - [**Gisquick**](https://gisquick.org/) – jedna z volně dostupných publikačních open source platforem pro QGIS
 
+!!! note
+
+    Pro QGIS existuje více publikačních platforem. Jako dalšího zástupce můžeme zmínit [Lizmap](https://www.lizmap.com/en/).
+
 ## Použité datové podklady
 
 - [RÚIAN](../../data/#ruian)
